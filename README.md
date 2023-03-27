@@ -106,3 +106,6 @@ bash quantize.sh
 ```
 >>>After running quantize.sh, the quantized model are available in
 tf_resnetv1_50_imagenet_224_224_6.97G_3.0/quantized
+
+## Compiling the model
+
