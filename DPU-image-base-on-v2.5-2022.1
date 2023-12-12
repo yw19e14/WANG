@@ -19,10 +19,19 @@
 
 	• Run resnet50 example
 	
-	
-	env LD_LIBRARY_PATH=samples/lib XLNX_VART_FIRMWARE=/media/sd-mmcblk0p1/dpu.xclbin samples/bin/resnet50 img/bellpeppe-994958.JPEG
-	
-	
+	env LD_LIBRARY_PATH=/home/root/app/samples/lib XLNX_VART_FIRMWARE=/run/media/mmcblk0p1/dpu.xclbin samples/bin/resnet50 images/001.jpg XLNX_ENABLE_FINGERPRINT_CHECK=0
+
+	not:
+ 	1) "images/001.jpg" can be found in: C:\Users\user\Downloads\vitis_ai_runtime_r2.5.0_image_video\images
+  	2) "XLNX_ENABLE_FINGERPRINT_CHECK=0" can ignore these errors:
+         W1119 17:21:40.170575   596 dpu_runner_base_imp.cpp:676] CHECK fingerprint fail ! model_fingerprint 
+         0x101000016010407 dpu_fingerprint 0x101000017010407
+        F1119 17:21:40.170719   596 dpu_runner_base_imp.cpp:648] fingerprint check failure.
+        *** Check failure stack trace: ***
+ 	3) the above error means: 
+         When running a DPU based application, the fingerprint error happens when there is an architecture mismatch between the DPU in the platform and the compiled XMODEL. If you want to solve this, please follow:https://xilinx.eetrend.com/content/2023/100576175.html
+
+
 	
 	
 
