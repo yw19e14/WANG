@@ -1,17 +1,30 @@
-To set up the Docker on the host, follow these steps:
-Clone the Vitis AI repository to obtain the examples, reference code, and scripts.
+1. To set up the Docker on the host, follow these steps:
+   Clone the Vitis AI repository to obtain the examples, reference code, and scripts.
 
-- download Vitis-AI-v2.5 from  https://github.com/Xilinx/Vitis-AI 
-- [Host]$ cd Vitis-AI
+  - download Vitis-AI-v2.5 from  https://github.com/Xilinx/Vitis-AI 
+  - [Host]$ cd Vitis-AI
 
-Install Docker. If Docker is not installed on your machine yet, see the official Docker documentation.
-Ensure your linux user is in the group docker
-Download the latest Vitis AI Docker.
+2. Install Docker. If Docker is not installed on your machine yet, see the official Docker documentation.
+   Ensure your linux user is in the group docker  
+   Download the latest Vitis AI Docker.
 
-- [Host]$ docker pull xilinx/vitis-ai-cpu:latest
+   - [Host]$ docker pull xilinx/vitis-ai-cpu:latest
 
-Quantizing the model
-Prepare dataset. For tf_resnet50 model, download the calibration images from Imagenet_calib.tar.gz, and copy into Vitis-AI folder (Full dataset is from ImageNet).
-Launch the docker image
+3. Take tensorflow resnet50 for example.
 
-- [Host]$ ./docker_run.sh xilinx/vitis-ai-cpu:latest
+   - [Host]$ cd Vitis-AI
+   - [Host]$ wget https://www.xilinx.com/bin/public/openDownload?filename=tf_resnetv1_50_imagenet_224_224_6.97G_2.5.zip -O tf_resnetv1_50_imagenet_224_224_6.97G_2.5.zip
+   - [Host]$ unzip tf_resnetv1_50_imagenet_224_224_6.97G_2.5.zip
+
+4. Quantizing the model
+   Prepare dataset. For tf_resnet50 model, download the calibration images from Imagenet_calib.tar.gz, and copy into Vitis-AI folder (Full dataset is from ImageNet).
+   Launch the docker image
+
+   - [Host]$ ./docker_run.sh xilinx/vitis-ai-cpu:latest
+
+   Quantize the model
+   - Set CALIB_BATCH_SIZE in the tf_resnetv1_50_imagenet_224_224_6.97G_2.5/code/quantize/config.ini to 5. Then run
+   - [Docker]$ conda activate vitis-ai-tensorflow
+   - [Docker]$ tar -xzvf Imagenet_calib.tar.gz -C tf_resnetv1_50_imagenet_224_224_6.97G_2.5/data
+   - [Docker]$ cd tf_resnetv1_50_imagenet_224_224_6.97G_2.5/code/quantize
+   - [Docker]$ bash quantize.sh
