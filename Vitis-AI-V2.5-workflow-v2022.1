@@ -9,3 +9,9 @@ Ensure your linux user is in the group docker
 Download the latest Vitis AI Docker.
 
 - [Host]$ docker pull xilinx/vitis-ai-cpu:latest
+
+Quantizing the model
+Prepare dataset. For tf_resnet50 model, download the calibration images from Imagenet_calib.tar.gz, and copy into Vitis-AI folder (Full dataset is from ImageNet).
+Launch the docker image
+
+- [Host]$ ./docker_run.sh xilinx/vitis-ai-cpu:latest
