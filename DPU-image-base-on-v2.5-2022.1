@@ -1,23 +1,24 @@
 	1. Follow DPU-IP vitis-work-flow:
 
-	• E:\res\DPUCZDX8G\DPUCZDX8G\prj\Vitis\README.md
+	- E:\res\DPUCZDX8G\DPUCZDX8G\prj\Vitis\README.md
 
-	• Make platform by:
-	E:\res\DPUCZDX8G\DPUCZDX8G\prj\Vitis\platforms\README.md
+	- Make platform by:
+	  E:\res\DPUCZDX8G\DPUCZDX8G\prj\Vitis\platforms\README.md
 	
-	• Install common_image:
-	•  export EDGE_COMMON_SW=<mpsoc common system>/xilinx-zynqmp-common-v2022.1
+	- Install common_image:
+	  export EDGE_COMMON_SW=<mpsoc common system>/xilinx-zynqmp-common-v2022.1
+   
+	- Make platform by:
+	  E:\res\DPUCZDX8G\DPUCZDX8G\prj\Vitis\platforms\README.md
 	
-	
-	• Make platform by:
-	E:\res\DPUCZDX8G\DPUCZDX8G\prj\Vitis\platforms\README.md
-	
-	• make all KERNEL=DPU DEVICE=zcu104
+	- make all KERNEL=DPU DEVICE=zcu104
 
-	• Copy "sd_card.img" and download in SD CARD
+	2. Copy "sd_card.img" and download in SD CARD
 
+ 	- connect board with serial prot in 115200 bps
+  
  	- config IP address of the board 
-  	 ifconfig eth0 192.168.1.13 netmask 255.255.255.0 up
+  	  ifconfig eth0 192.168.1.13 netmask 255.255.255.0 up
 
     	- cp the "D:\wangyb\DPUCZDX8G\DPUCZDX8G\app" file in "/home/root"
 
@@ -28,15 +29,11 @@
 
  	- cd app
   
-
-
-
-
-	• Run resnet50 example
+	3 Run resnet50 example
 	- export XLNX_ENABLE_FINGERPRINT_CHECK=0
 	- env LD_LIBRARY_PATH=/home/root/app/samples/lib XLNX_VART_FIRMWARE=/run/media/mmcblk0p1/dpu.xclbin samples/bin/resnet50 images/001.jpg
 
-	not:
+	NOTE:
  	1) "images/001.jpg" can be found in: C:\Users\user\Downloads\vitis_ai_runtime_r2.5.0_image_video\images
   	2) "XLNX_ENABLE_FINGERPRINT_CHECK=0" can ignore these errors:
          W1119 17:21:40.170575   596 dpu_runner_base_imp.cpp:676] CHECK fingerprint fail ! model_fingerprint 
