@@ -16,10 +16,25 @@
 
 	• Copy "sd_card.img" and download in SD CARD
 
+ 	- config IP address of the board 
+  	 ifconfig eth0 192.168.1.13 netmask 255.255.255.0 up
+
+    	- cp the "D:\wangyb\DPUCZDX8G\DPUCZDX8G\app" file in "/home/root"
+
+     	- cp "vitis_ai_runtime_r2.5.0_image_video\images" in "/home/root/app"
+
+      	- cp xmodule file from "module" 
+       	  root@zynqmp-common-20221:~/app/model# cp resnet50.xmodel /home/root/app/
+
+ 	- cd app
+  
+
+
+
 
 	• Run resnet50 example
-	
-	env LD_LIBRARY_PATH=/home/root/app/samples/lib XLNX_VART_FIRMWARE=/run/media/mmcblk0p1/dpu.xclbin samples/bin/resnet50 images/001.jpg XLNX_ENABLE_FINGERPRINT_CHECK=0
+	- export XLNX_ENABLE_FINGERPRINT_CHECK=0
+	- env LD_LIBRARY_PATH=/home/root/app/samples/lib XLNX_VART_FIRMWARE=/run/media/mmcblk0p1/dpu.xclbin samples/bin/resnet50 images/001.jpg
 
 	not:
  	1) "images/001.jpg" can be found in: C:\Users\user\Downloads\vitis_ai_runtime_r2.5.0_image_video\images
