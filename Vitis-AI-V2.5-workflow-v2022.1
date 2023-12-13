@@ -1,3 +1,7 @@
+==================================================================================================
+REF: https://docs.xilinx.com/r/2.5-English/ug1414-vitis-ai/Downloading-float-model-from-model-zoo
+==================================================================================================
+
 1. To set up the Docker on the host, follow these steps:
    Clone the Vitis AI repository to obtain the examples, reference code, and scripts.
 
@@ -28,3 +32,17 @@
    - [Docker]$ tar -xzvf Imagenet_calib.tar.gz -C tf_resnetv1_50_imagenet_224_224_6.97G_2.5/data
    - [Docker]$ cd tf_resnetv1_50_imagenet_224_224_6.97G_2.5/code/quantize
    - [Docker]$ bash quantize.sh
+
+5. Compiling the model
+   For edge, take ZCU104 target as an example.
+
+   - [Docker]$ cd ../..
+   - [Docker]$ vai_c_tensorflow -f ./quantized/quantize_eval_model.pb -a /opt/vitis_ai/compiler/arch/DPUCZDX8G/ZCU104/arch.json -o ./compiled -n resnet50_tf
+cd 
+
+6. Deployment on Edge boards
+   -Copy the compiled model to the board.
+
+
+
+
